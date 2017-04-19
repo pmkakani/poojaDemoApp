@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs';
+import {Observable} from 'rxjs/Observable'
 //import { Team } from '../../pages/add-technology/add-technology';
 /**
  * Generated class for the Team page.
@@ -16,7 +18,7 @@ import 'rxjs/add/operator/map';
 })
 export class Team {
 
-public items : any = [];
+public doctorList : any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public http: Http) {
   }
@@ -33,7 +35,10 @@ public items : any = [];
       .map(res => res.json())
       .subscribe(data =>
       {
-         this.items = data;
+        console.log('.....Team.....' + data.doctorList);
+         this.doctorList = <any>data.doctorList;
+         console.log('.....Team.....'+this.doctorList.length );
+         console.log('.....Team2223333.....'+this.doctorList[0].doctorName);
       });
    }
 
