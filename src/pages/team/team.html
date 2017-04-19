@@ -19,8 +19,8 @@
 
    
 
-   <ion-item  ng-repeat="doctor in doctorList">
-      <h2>{{ doctor }} </h2>
+   <ion-item  *ngFor="let doctor of doctorList">
+      <h2>{{ doctor.doctorName }} </h2>
       
    </ion-item>
 

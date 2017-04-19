@@ -18,7 +18,7 @@ import {Observable} from 'rxjs/Observable'
 })
 export class Team {
 
-public doctorList : any = [];
+public doctorList =[];
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public http: Http) {
   }
@@ -36,7 +36,7 @@ public doctorList : any = [];
       .subscribe(data =>
       {
         console.log('.....Team.....' + data.doctorList);
-         this.doctorList = <any>data.doctorList;
+         this.doctorList = data.doctorList;
          console.log('.....Team.....'+this.doctorList.length );
          console.log('.....Team2223333.....'+this.doctorList[0].doctorName);
       });
