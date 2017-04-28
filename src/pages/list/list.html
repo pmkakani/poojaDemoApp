@@ -12,9 +12,10 @@
     <!--button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)"-->
     <button ion-item *ngFor="let item of items" >
               <!--img  ng-src="{{'../../assets/img/'+ item.p_image_id +'.jpg'}}"  ng-click="showProductInfo(item.p_id,item.p_description,item.p_image_id,item.p_name,item.p_price)" -->
-
+	<div class="item-note" item-left>	
         <img src="img/{{item.icon}}.jpg" width="100px" height="100px">
-			<div class="item-note" item-right>	
+	</div>
+			<div class="item-note" item-left>	
       {{item.title}}
 			</div>
       <div class="item-note" item-right>

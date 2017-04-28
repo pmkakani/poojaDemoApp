@@ -31,7 +31,7 @@ public productList =[];
 
    load()
    {
-      this.http.get('http://localhost:8888/decor_products.php')
+      this.http.get('http://192.168.1.244:8888/decor_products.php')
       .map(res => res.json())
       .subscribe(data =>
       {
