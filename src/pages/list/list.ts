@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs';
 
 @Component({
   selector: 'page-list',
@@ -10,7 +13,9 @@ export class ListPage {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+public productList =[];
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  public http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -19,14 +24,29 @@ export class ListPage {
     'american-football', 'boat', 'bluetooth', 'build'];
 
     this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+    this.load();
+  }
+
+
+
+   load()
+   {
+      this.http.get('http://localhost:8888/decor_products.php')
+      .map(res => res.json())
+      .subscribe(data =>
+      {
+        console.log(",,,,,DATA......"+data);
+         this.productList = data.records;
+         for (let i = 0; i < this.productList.length; i++) {
+        this.items.push({
+        title:  this.productList[i].p_name,
+        note: 'Price $ ' + this.productList[i].p_price,
+        icon: this.productList[i].p_image_id
       });
     }
-  }
+      });
+   }
+
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!

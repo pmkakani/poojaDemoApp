@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs';
-import {Observable} from 'rxjs/Observable'
+//import {Observable} from 'rxjs/Observable'
 //import { Team } from '../../pages/add-technology/add-technology';
 /**
  * Generated class for the Team page.
@@ -35,10 +35,7 @@ public doctorList =[];
       .map(res => res.json())
       .subscribe(data =>
       {
-        console.log('.....Team.....' + data.doctorList);
          this.doctorList = data.doctorList;
-         console.log('.....Team.....'+this.doctorList.length );
-         console.log('.....Team2223333.....'+this.doctorList[0].doctorName);
       });
    }
 

@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-//import { ListPage } from '../pages/list/list';
+import { ListPage } from '../pages/list/list';
 import { Signup } from '../pages/signup/signup';
 import { Userpage } from '../pages/userpage/userpage';
 import { Team} from '../pages/team/team';
@@ -18,7 +18,7 @@ import{HttpModule} from '@angular/http'
   declarations: [
     MyApp,
     HomePage,
-   
+   ListPage,
     Signup,
     Userpage,
     Team,
@@ -32,7 +32,7 @@ import{HttpModule} from '@angular/http'
   entryComponents: [
     MyApp,
     HomePage,
-   
+    ListPage,
     Userpage,
     Signup,
     Team,

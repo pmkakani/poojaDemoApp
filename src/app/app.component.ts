@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { Team } from '../pages/team/team';
-//import { ListPage } from '../pages/list/list';
+import { ListPage } from '../pages/list/list';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +23,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      //{ title: 'List', component: ListPage },
+      { title: 'List', component: ListPage },
        { title: 'Team', component: Team }
     ];
 
@@ -43,4 +43,5 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
 }
