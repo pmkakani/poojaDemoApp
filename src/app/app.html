@@ -1,20 +1,20 @@
-<ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <ion-content>
 
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" >
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
 
-</ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<!--
+ <ion-tabs>
+  <ion-tab *ngFor="let tab of tabs" [root]="tab.root" [tabTitle]="tab.title" [tabIcon]="tab.icon"></ion-tab>
+</ion-tabs>
+-->
+<ion-tabs>
+  <ion-tab  tabTitle="Home" [root]="homeTab" tabIcon="home"></ion-tab>
+   <ion-tab  tabTitle="Search" [root]="searchTab" tabIcon="search"></ion-tab>
+    <ion-tab  tabTitle="Wishlist" [root]="wishListTab" tabIcon="heart"></ion-tab>
+     <ion-tab  tabTitle="Cart" [root]="cartTab" tabIcon="cart" tabBadge={{userData.total_qty}}></ion-tab>
+      <ion-tab  tabTitle="Account" [root]="accountTab" tabIcon="person"></ion-tab>
+</ion-tabs>
+

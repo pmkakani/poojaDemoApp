@@ -12,8 +12,8 @@
         <ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
   </ion-toolbar>
   <ion-list>
-    <!--button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)"-->
-    <button ion-item *ngFor="let item of items" >
+    <button ion-item *ngFor="let item of items" [navPush]="pushPage" [navParams]="item">
+ 
             
 <!--ion-scroll scrollY="true">
  </ion-scroll-->
@@ -23,18 +23,22 @@
 			<div class="item-note" item-left>	
       {{item.title}}
 			</div>
+        
       <div class="item-note" item-right>
         {{item.price}}
       </div>
 
-     <div class="add-to-cart">
-                <button class="button button-block button-balanced" (click)="addToCart(item)">
-                    Add to Cart
-                </button>
-            </div>
+  
+
     </button>
   </ion-list>
-  <!--div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div-->
+  <!--
+     <ion-infinite-scroll ng-if="hasmore"  (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles"
+        loadingText="Loading more data..."></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+  
+-->
+ 
 </ion-content>

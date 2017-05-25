@@ -3,6 +3,11 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs';
+import { Data } from '../../providers/data';
+import 'rxjs/add/operator/debounceTime';
+import { FormControl } from '@angular/forms';
+
+
 
 @Component({
   selector: 'page-list',
@@ -11,17 +16,22 @@ import 'rxjs';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: Array<{title: string, price: string, icon: string,id:string}>;
+
+searchTerm: string = '';
+searching: any = false;
+    searchControl: FormControl;
+  _cart = [];
+
 
 public productList =[];
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public http: Http) {
+    this.searchControl = new FormControl();
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+ 
 
     this.items = [];
     this.load();
@@ -40,8 +50,9 @@ public productList =[];
          for (let i = 0; i < this.productList.length; i++) {
         this.items.push({
         title:  this.productList[i].p_name,
-        note: 'Price $ ' + this.productList[i].p_price,
-        icon: this.productList[i].p_image_id
+        price: 'Price $ ' + this.productList[i].p_price,
+        icon: this.productList[i].p_image_id,
+        id: this.productList[i].p_id
       });
     }
       });
@@ -54,4 +65,44 @@ public productList =[];
       item: item
     });
   }
+
+
+  addToCart(item) {
+    this._cart.push(item);
+  }
+
+
+  filterItems(searchTerm){
+ 
+        return this.items.filter((item) => {
+            return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        });     
+ 
+    }
+
+
+    setFilteredItems() {
+ 
+
+        this.items = this.filterItems(this.searchTerm);
+ 
+    }
+
+    ionViewDidLoad() {
+ 
+        this.setFilteredItems();
+ 
+        this.searchControl.valueChanges.debounceTime(20).subscribe(search => {
+ 
+            this.searching = false;
+            this.setFilteredItems();
+ 
+        });
+ 
+ 
+    }
+
+    onSearchInput(){
+        this.searching = true;
+    }
 }

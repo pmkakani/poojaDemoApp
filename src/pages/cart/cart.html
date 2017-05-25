@@ -1,0 +1,48 @@
+<!--
+  Generated template for the Cart page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cart</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding="'true'" class="has-header">
+        <div>
+            <p>Total ( {{ total_qty }} ) =
+                <strong> {{total_amount}}</strong>
+            </p>
+        </div>
+        <button ion-button [navPush]="pushPage" [navParams]="_cart">Check Out</button>
+		
+		<div *ngFor="let item of _cart"  >
+			<div class="list card" >
+        <div class="item-note" item-left>	
+        <img src="img/{{item.icon}}.jpg" width="100px" height="100px">
+	</div>
+				<div class="item item-divider">{{item.title}} </div>
+				<div class="item item-body">
+				<form class="list"></form>
+				
+					<div >
+            <button ion-button (click)=removeFromCart(item)>Remove</button>
+            <button ion-button (click)="inc(item.id)">+</button>
+						{{item.quantity}}
+            <button ion-button (click)="dec(item.id)" >-</button>
+
+            <div class="item-note" item-right>
+               {{item.price}}
+                     </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+</ion-content>
