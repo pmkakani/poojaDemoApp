@@ -25,15 +25,42 @@ console.log('........... OrderPlaced..... '+userdata.email);
         this.mailgunUrl = "sandboxb216722aa6aa4123b462f348364c0268.mailgun.org";
         this.mailgunApiKey = window.btoa("api:key-d31c27bb0b957153f49600a86d339e0f");
         var message="";
+        var products_details="";
         for (var i=0;i<userdata._cart.length;i++)
         {
          message+= "Item ("+(i+1)+") "+ userdata._cart[i].title+"\n";
+         products_details+=userdata._cart[i].id+"-"+userdata._cart[i].quantity+";";
         }
-        this.send(userdata.email,"test email",message);
+
+var email=userdata.email;
+var address="India";
+var mobile_number="1234567890";
+var order_date="2010/09/10";
+products_details
+var order = {'email':email,
+              'address':address,
+              'mobile_number':mobile_number,
+              'order_date':order_date,
+              'products_details':products_details
+            }
+
+console.log(".....JSON....order......"+JSON.stringify(order));
+let headers = new Headers();
+headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+
+this.http.post('http://www.moneymint.net/app_testing/addOrder.php', JSON.stringify(order), {
+    headers: headers
+}).subscribe(res => {
+    console.log('post result %o', res);
+});
+
+
+        //this.send(userdata.email,"test email",message);
         userdata._cart=[];
         userdata.total_qty=0;	
 			  userdata.total_amount=0;
-        
+
 
 }
 
