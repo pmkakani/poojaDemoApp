@@ -4,17 +4,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
-//import { HomePage } from '../pages/home/home';
-//import { Team } from '../pages/team/team';
-//import { ListPage } from '../pages/list/list';
-//import { Tabs } from '../pages/tabs/tabs';
+import { HomePage } from '../pages/home/home';
+import { Team } from '../pages/team/team';
+import { ListPage } from '../pages/list/list';
+import { Tabs } from '../pages/tabs/tabs';
 import { Search } from '../pages/search/search';
 import { Wishlist } from '../pages/wishlist/wishlist';
 import { Cart } from '../pages/cart/cart';
 import { Account } from '../pages/account/account';
 import { Userpage } from '../pages/userpage/userpage';
-
-
 
 
 import { UserData } from '../providers/user-data';

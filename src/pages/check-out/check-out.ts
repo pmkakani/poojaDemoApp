@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+//import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 /**
  * Generated class for the CheckOut page.
  *
@@ -14,7 +14,7 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
 })
 export class CheckOut {
 
-  
+  /*
 
 constructor(private payPal: PayPal) { 
   //initialize();
@@ -63,4 +63,5 @@ this.payPal.init({
   // Error in initialization, maybe PayPal isn't supported or something else
 });
 }
+*/
 }

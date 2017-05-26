@@ -33,6 +33,7 @@ console.log('........... OrderPlaced..... '+userdata.email);
         userdata._cart=[];
         userdata.total_qty=0;	
 			  userdata.total_amount=0;
+        
 
 }
 

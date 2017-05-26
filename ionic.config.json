@@ -1,6 +1,5 @@
 {
   "name": "poojaDemoApp",
   "app_id": "c40a51a7",
-  "v2": true,
-  "typescript": true
+  "type": "ionic-angular"
 }
