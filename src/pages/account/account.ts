@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { OrderHistory } from '../order-history/order-history';
+
+import {UserData} from '../../providers/user-data';
 
 /**
  * Generated class for the Account page.
@@ -14,11 +17,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Account {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  pushPage=OrderHistory;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  public userdata: UserData
+  ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Account');
   }
+
+
+
+  
 
 }

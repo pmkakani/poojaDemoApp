@@ -15,17 +15,17 @@ import { Cart } from '../pages/cart/cart';
 import { Account } from '../pages/account/account';
 import { UserData } from '../providers/user-data';
 import { ProductDetails } from '../pages/product-details/product-details';
-import { CheckOut } from '../pages/check-out/check-out';
 import { Checkout } from '../pages/checkout/checkout';
 import { CustomerDetails } from '../pages/customer-details/customer-details';
 import { OrderPlaced } from '../pages/order-placed/order-placed';
+import { OrderHistory } from '../pages/order-history/order-history';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AuthService} from '../shared/authservice';
 import{HttpModule} from '@angular/http'
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
-import { EmailComposer } from '@ionic-native/email-composer';
+//import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+//import { EmailComposer } from '@ionic-native/email-composer';
 //import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 
@@ -43,10 +43,11 @@ import { EmailComposer } from '@ionic-native/email-composer';
     Cart,
     Account,
     ProductDetails,
-    CheckOut,
+    
     Checkout,
     CustomerDetails,
-    OrderPlaced
+    OrderPlaced,
+    OrderHistory
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -68,20 +69,21 @@ import { EmailComposer } from '@ionic-native/email-composer';
     Cart,
     Account,
     ProductDetails,
-    CheckOut,
+    
     Checkout,
     CustomerDetails,
-    OrderPlaced
+    OrderPlaced,
+    OrderHistory
 
   ],
   providers: [
-    PayPal,
+   
     HttpModule,
     AuthService,
     StatusBar,
     SplashScreen,
     UserData,
-    EmailComposer,
+    
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

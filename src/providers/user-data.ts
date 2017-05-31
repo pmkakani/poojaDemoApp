@@ -10,6 +10,11 @@ const localforage: LocalForage = require("localforage");
 export class UserData {
   _cart = [];
   email:string;
+  name:string;
+  address:string;
+  mobile:string;
+
+  
   HAS_LOGGED_IN = 'hasLoggedIn';
 
   total_qty=0;	

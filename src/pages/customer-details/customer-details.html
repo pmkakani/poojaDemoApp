@@ -16,10 +16,21 @@
 <ion-content padding>
   <ion-list>
       <ion-item>
-          <ion-label floating>Email Address</ion-label>
+          <ion-label floating>Email Address </ion-label>
           <ion-input [(ngModel)] = "userdata.email" type="text"></ion-input>
       </ion-item>
-      
+      <ion-item>
+          <ion-label floating>Name </ion-label>
+          <ion-input [(ngModel)] = "userdata.name" type="textarea"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Address </ion-label>
+          <ion-input [(ngModel)] = "userdata.address" type="textarea"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Phone </ion-label>
+          <ion-input [(ngModel)] = "userdata.mobile" type="text"></ion-input>
+      </ion-item>
   </ion-list>
 
  <button ion-button [navPush]="pushPage">Place Order</button>

@@ -19,12 +19,7 @@ export class CustomerDetails {
 
 
   pushPage=OrderPlaced;
-  name:string;
-  address1:string;
-  address2:string;
-  city:string;
-  state:string;
-  zipcode:number;
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public userdata:UserData) {
   }

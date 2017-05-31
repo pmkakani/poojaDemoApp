@@ -14,13 +14,7 @@
 
 
 <ion-content padding="'true'" class="has-header">
-        <div>
-            <p>Total ( {{ total_qty }} ) =
-                <strong> {{total_amount}}</strong>
-            </p>
-        </div>
-        <button ion-button [navPush]="pushPage" [navParams]="_cart">Check Out</button>
-		
+        
 		<div *ngFor="let item of _cart"  >
 			<div class="list card" >
         <div class="item-note" item-left>	
@@ -44,5 +38,12 @@
 			</div>
 		</div>
 		
-
+<div>
+            <p>Total ( {{ total_qty }} ) =
+                <strong> {{total_amount}}</strong>
+            </p>
+        </div>
+        <div [hidden]="total_qty==0">
+        <button ion-button [navPush]="pushPage" [navParams]="_cart">Check Out</button>
+        </div>
 </ion-content>

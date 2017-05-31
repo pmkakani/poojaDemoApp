@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { EmailComposer } from '@ionic-native/email-composer';
+//import { EmailComposer } from '@ionic-native/email-composer';
 import {Http, Request, RequestMethod,Headers} from "@angular/http";
 
 import {UserData} from '../../providers/user-data';
@@ -18,7 +18,7 @@ import {UserData} from '../../providers/user-data';
 export class OrderPlaced {
 mailgunUrl='https://api.mailgun.net/v3/sandboxb216722aa6aa4123b462f348364c0268.mailgun.org/messages'
 mailgunApiKey='api:key-d31c27bb0b957153f49600a86d339e0f'
-  constructor(public userdata:UserData,public http: Http,public navCtrl: NavController, public navParams: NavParams,private emailComposer: EmailComposer) {
+  constructor(public userdata:UserData,public http: Http,public navCtrl: NavController, public navParams: NavParams) {
   
 
 console.log('........... OrderPlaced..... '+userdata.email);
@@ -29,12 +29,16 @@ console.log('........... OrderPlaced..... '+userdata.email);
         for (var i=0;i<userdata._cart.length;i++)
         {
          message+= "Item ("+(i+1)+") "+ userdata._cart[i].title+"\n";
-         products_details+=userdata._cart[i].id+"-"+userdata._cart[i].quantity+";";
+         products_details+=userdata._cart[i].id+"-"+userdata._cart[i].quantity;
+         if(i!=userdata._cart.length-1)
+         {
+             products_details+=";";
+         }
         }
 
 var email=userdata.email;
-var address="India";
-var mobile_number="1234567890";
+var address=userdata.address;
+var mobile_number=userdata.mobile;
 var order_date="2010/09/10";
 products_details
 var order = {'email':email,

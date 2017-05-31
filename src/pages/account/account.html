@@ -1,5 +1,5 @@
 <!--
-  Generated template for the Account page.
+  Generated template for the CustomerDetails page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,12 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>account</ion-title>
+    <ion-title>Search Orders</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+      <ion-item>
+          <ion-label floating>Email Address</ion-label>
+          <ion-input [(ngModel)] = "userdata.email" type="text"></ion-input>
+      </ion-item>
+      
+  </ion-list>
 
+ <button ion-button [navPush]="pushPage">Search Orders</button>
 </ion-content>

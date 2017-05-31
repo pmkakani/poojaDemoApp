@@ -13,7 +13,7 @@ import { Wishlist } from '../pages/wishlist/wishlist';
 import { Cart } from '../pages/cart/cart';
 import { Account } from '../pages/account/account';
 import { Userpage } from '../pages/userpage/userpage';
-
+import { OrderHistory } from '../pages/order-history/order-history';
 
 import { UserData } from '../providers/user-data';
 
@@ -27,7 +27,7 @@ export class MyApp {
   searchTab=Search;
   wishListTab=Wishlist;
   cartTab=Cart;
-  acountTab=Userpage;
+  accountTab=Account;
 
   cartTotal:number;
 

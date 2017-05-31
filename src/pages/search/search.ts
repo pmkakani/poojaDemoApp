@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs';
-import { Data } from '../../providers/data';
 import 'rxjs/add/operator/debounceTime';
 import { FormControl } from '@angular/forms';
 
@@ -11,7 +10,7 @@ import {UserData} from '../../providers/user-data';
 import { ProductDetails } from '../product-details/product-details';
 
 
-import * as _ from 'lodash';
+//import * as _ from 'lodash';
 
 
 @Component({
@@ -32,8 +31,7 @@ export class Search {
   category:string;
   till:number;
 
-  //cartItems: Array<{title: string, price: string, icon: string,id:string,quantity:number}>;
-
+itemsBackup=[];
 searchTerm: string = '';
 searching: any = false;
     searchControl: FormControl;
@@ -47,7 +45,7 @@ public productList =[];
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
- this.pushPage=ProductDetails;
+    this.pushPage=ProductDetails;
 
     this.items = [];
 
@@ -57,6 +55,7 @@ public productList =[];
 	  this.till=0;
 
     this.loadMore();
+    this.itemsBackup=this.items;
   }
 
 
@@ -116,15 +115,8 @@ this.http.get('http://moneymint.net/app_testing/decor_products.php')
 	}
 
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(Search, {
-      item: item
-    });
-  }
-
 */
-  addToCart(event, item) {
+  /*addToCart(event, item) {
     console.log(",,,,,item......"+item);
     this.userdata.addToCart(item);
 
@@ -135,26 +127,39 @@ openDetails(event, item) {
     //this.userdata.addToCart(item);
 
 
-  }
+  }*/
+
+    onSearchInput(){
+      console.log("onSearchInput........");
+        this.searching = true;
+       
+            this.setFilteredItems();
+ 
+        
+    }
+
+setFilteredItems() {
+        this.items = this.filterItems(this.searchTerm);
+    }
 
   filterItems(searchTerm){
- 
+        this.items=this.itemsBackup;
         return this.items.filter((item) => {
             return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
         });     
  
     }
 
+ionViewWillEnter() {
+console.log("onSearchInput........HOME .....");
+this.items=this.itemsBackup;
+this.searchTerm='';
+}
+    
 
-    setFilteredItems() {
- 
+     /*
+     ionViewDidLoad() {
 
-        this.items = this.filterItems(this.searchTerm);
- 
-    }
-
-    ionViewDidLoad() {
- 
         this.setFilteredItems();
  
         this.searchControl.valueChanges.debounceTime(20).subscribe(search => {
@@ -163,9 +168,10 @@ openDetails(event, item) {
             this.setFilteredItems();
  
         });
+
  
- 
-    }
+    } */
+
 /*
 doInfinite(infiniteScroll)
 {
@@ -179,7 +185,5 @@ infiniteScroll.complete();
 			
 }
 */
-    onSearchInput(){
-        this.searching = true;
-    }
+
 }
