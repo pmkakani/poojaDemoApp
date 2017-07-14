@@ -12,25 +12,29 @@
         <ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
   </ion-toolbar>
   <ion-list>
-    <button ion-item *ngFor="let item of items" [navPush]="pushPage" [navParams]="item">
- 
-            
-<!--ion-scroll scrollY="true">
- </ion-scroll-->
-	<div class="item-note" item-left>	
-        <img src="img/{{item.icon}}.jpg" width="100px" height="100px">
-	</div>
-			<div class="item-note" item-left>	
-      {{item.title}}
-			</div>
+    <ion-item-group *ngFor="let category of items">
+      <ion-item-divider>{{category.categoryName}}</ion-item-divider>
+        <button ion-item *ngFor="let item of category.categoryProducts" [navPush]="pushPage" [navParams]="item">
         
-      <div class="item-note" item-right>
-        {{item.price}}
-      </div>
+                    
+        <!--ion-scroll scrollY="true">
+        </ion-scroll-->
+          <div class="item-note" item-left>	
+                <img src="img/{{item.icon}}.jpg" width="100px" height="100px">
+          </div>
+              <div class="item-note" item-left>	
+              {{item.title}}
+              </div>
+                
+              <div class="item-note" item-right>
+                {{item.price}}
+              </div>
 
-  
+          
 
-    </button>
+            </button>
+
+    </ion-item-group>
   </ion-list>
   <!--
      <ion-infinite-scroll ng-if="hasmore"  (ionInfinite)="doInfinite($event)">

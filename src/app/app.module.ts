@@ -27,7 +27,26 @@ import{HttpModule} from '@angular/http'
 //import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 //import { EmailComposer } from '@ionic-native/email-composer';
 //import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': 'c40a51a7'
+ },
+  'push': {
+    'sender_id': '483133223612',
+    'pluginConfig': {
+      'ios': {
+        'badge': true,
+        'sound': true
+      },
+      'android': {
+        'icon': "drawable-hdpi-icon.png",
+        'iconColor': '#343434'
+      }
+    }
+  }
+};
 
 @NgModule({
   declarations: [
@@ -52,6 +71,8 @@ import{HttpModule} from '@angular/http'
   imports: [
     BrowserModule,HttpModule,
     IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings)
+
    // IonicImageViewerModule
 
   ],

@@ -17,19 +17,19 @@
   <ion-list>
       <ion-item>
           <ion-label floating>Email Address </ion-label>
-          <ion-input [(ngModel)] = "userdata.email" type="text"></ion-input>
+          <ion-input [(ngModel)] = "userdata.email" type="email"></ion-input>
       </ion-item>
       <ion-item>
           <ion-label floating>Name </ion-label>
-          <ion-input [(ngModel)] = "userdata.name" type="textarea"></ion-input>
+          <ion-input [(ngModel)] = "userdata.name" type="text"></ion-input>
       </ion-item>
       <ion-item>
           <ion-label floating>Address </ion-label>
-          <ion-input [(ngModel)] = "userdata.address" type="textarea"></ion-input>
+          <ion-textarea [(ngModel)] = "userdata.address" type="textarea"></ion-textarea>
       </ion-item>
       <ion-item>
           <ion-label floating>Phone </ion-label>
-          <ion-input [(ngModel)] = "userdata.mobile" type="text"></ion-input>
+          <ion-input [(ngModel)] = "userdata.mobile" type="tel"></ion-input>
       </ion-item>
   </ion-list>
 

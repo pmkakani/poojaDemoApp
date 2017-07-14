@@ -17,6 +17,10 @@ import { OrderHistory } from '../pages/order-history/order-history';
 
 import { UserData } from '../providers/user-data';
 
+import {
+  Push,
+  PushToken
+} from '@ionic/cloud-angular';
 
 @Component({
   templateUrl: 'app.html'
@@ -39,7 +43,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
     tabs: Array<{title: string, root: any, icon:any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
+  constructor(public push:Push, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
   public userData:UserData) {
     this.initializeApp();
 this.cartTotal=this.userData.total_qty;
@@ -71,6 +75,20 @@ this.tabs = [
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+      if(this.platform.is("android")||this.platform.is("ios"))
+      {
+          this.push.register().then((t: PushToken) => {
+        return this.push.saveToken(t);
+      }).then((t: PushToken) => {
+        console.log('Token saved:', t.token);
+      });
+
+      this.push.rx.notification()
+        .subscribe((msg) => {
+          alert(msg.title + ': ' + msg.text);
+        });
+
+      }
   }
 
   openPage(page) {
